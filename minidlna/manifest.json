@@ -1,0 +1,17 @@
+{
+    "version": 0,
+
+    "menu": {
+        "minidlna": {
+            "label": "MiniDLNA",
+            "path": "index.html",
+            "order": 118,
+            "docs": [
+                {
+                    "label": "minidlna.conf(5) manual",
+                    "url": "https://manpages.debian.org/minidlna.conf"
+                }
+            ]
+        }
+    }
+}

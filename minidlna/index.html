@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script type="text/javascript" src="../base1/cockpit.js"></script>
+	<script type="text/javascript" src="../manifests.js"></script>
+	<title>MiniDLNA</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div id="app">
+		<header class="hdr">
+			<h1>MiniDLNA <span class="subtitle">(ReadyMedia DLNA/UPnP-AV server)</span></h1>
+			<div class="actions">
+				<span id="status" class="status"></span>
+				<button id="refresh" class="btn ghost">Refresh</button>
+			</div>
+		</header>
+		<div id="error" class="error" hidden></div>
+		<div id="notice" class="notice" hidden></div>
+		<main id="content"></main>
+	</div>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+:root {
+    --fg: #151515;
+    --muted: #6a6e73;
+    --line: #d2d2d2;
+    --bg-card: #fff;
+    --bg-sub: #f5f5f5;
+    --accent: #06c;
+    --ok: #3e8635;
+    --off: #c9190b;
+    --warn: #f0ab00;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "RedHatText", "Open Sans", Helvetica, Arial, sans-serif;
+    color: var(--fg);
+    background: #f0f0f0;
+}
+
+#app { padding: 1rem 1.5rem; }
+
+.hdr {
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.75rem; margin-bottom: 1rem;
+}
+.hdr h1 { font-size: 1.4rem; font-weight: 600; margin: 0; }
+.subtitle { color: var(--muted); font-size: 0.9rem; font-weight: 400; }
+.actions { display: flex; align-items: center; gap: 1rem; }
+.status { color: var(--muted); font-size: 0.85rem; }
+
+.btn {
+    background: var(--accent); color: #fff; border: none; border-radius: 3px;
+    padding: 0.4rem 0.9rem; cursor: pointer; font-size: 0.9rem;
+}
+.btn:hover { background: #004080; }
+.btn.ghost { background: #fff; color: var(--fg); border: 1px solid var(--line); }
+.btn.ghost:hover { background: var(--bg-sub); }
+.btn.danger { background: var(--off); }
+.btn.danger:hover { background: #a30f06; }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.btn.sm { padding: 0.25rem 0.6rem; font-size: 0.8rem; }
+
+.error, .notice {
+    padding: 0.75rem 1rem; border-radius: 3px; margin-bottom: 1rem;
+    white-space: pre-wrap;
+}
+.error { background: #faeae8; border: 1px solid var(--off); color: #7d1007; }
+.notice { background: #e7f1fa; border: 1px solid var(--accent); color: #06c; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; }
+.card {
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 4px;
+    padding: 1rem 1.25rem; margin-bottom: 1.25rem;
+}
+.card h2 { font-size: 1.1rem; margin: 0 0 0.75rem; display: flex; align-items: center; gap: 0.6rem; }
+.card.full { grid-column: 1 / -1; }
+.empty { color: var(--muted); font-style: italic; }
+
+.pill { font-size: 0.72rem; padding: 0.12rem 0.55rem; border-radius: 10px; color: #fff; }
+.pill.ok { background: var(--ok); }
+.pill.off { background: var(--off); }
+.pill.warn { background: var(--warn); color: #3d2f00; }
+
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0.25rem 1rem; font-size: 0.88rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; word-break: break-all; }
+
+.mono { font-family: "RedHatMono", "Courier New", monospace; }
+
+.tbl { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.tbl th, .tbl td { text-align: left; padding: 0.35rem 0.6rem; border-bottom: 1px solid var(--line); }
+.tbl th { color: var(--muted); font-weight: 600; }
+
+.btnrow { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+
+.stat { display: flex; gap: 1.5rem; }
+.stat .num { font-size: 1.6rem; font-weight: 700; }
+.stat .lbl { color: var(--muted); font-size: 0.8rem; }
+
+.field { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.6rem; }
+.flabel { font-size: 0.78rem; color: var(--muted); }
+.field input, .field select, .field textarea {
+    padding: 0.35rem 0.5rem; border: 1px solid var(--line); border-radius: 3px;
+    font-size: 0.85rem; font-family: inherit;
+}
+.row-inline { display: flex; gap: 0.5rem; align-items: center; }
+.row-inline input { flex: 1; }
+
+.mdir { display: flex; align-items: center; gap: 0.5rem; padding: 0.3rem 0; border-bottom: 1px solid var(--line); font-size: 0.85rem; }
+.mdir .types { background: var(--accent); color: #fff; border-radius: 3px; padding: 0.05rem 0.4rem; font-size: 0.7rem; }
+.mdir .path { flex: 1; word-break: break-all; }
+
+.logbox {
+    background: #1b1d23; color: #d6d6d6; font-family: "RedHatMono", monospace;
+    font-size: 0.78rem; padding: 0.75rem; border-radius: 3px; max-height: 320px;
+    overflow: auto; white-space: pre-wrap; word-break: break-all;
+}
+
+/* confirm dialog */
+.overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+    display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.dialog {
+    background: #fff; border-radius: 5px; padding: 1.25rem 1.5rem;
+    max-width: 520px; width: 90%; box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+}
+.dialog h3 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+.dialog p { margin: 0 0 0.75rem; font-size: 0.9rem; word-break: break-all; }
+.dialog-bar { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem; }
