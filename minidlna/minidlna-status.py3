@@ -133,10 +133,17 @@ def db_info(db_dir):
 
 def log_tail(log_dir, lines=80):
     path = os.path.join(log_dir, "minidlna.log")
-    if not os.path.exists(path):
-        return {"path": path, "exists": False, "text": ""}
-    out, _ = run(["tail", "-n", str(lines), path])
-    return {"path": path, "exists": True, "text": out}
+    if os.path.exists(path) and os.path.getsize(path) > 0:
+        out, _ = run(["tail", "-n", str(lines), path])
+        return {"path": path, "source": "file", "exists": True, "text": out}
+    # Under systemd's -S mode minidlnad logs to the journal, not log_dir, so
+    # the file stays empty. Fall back to journalctl in that case.
+    out, rc = run(["journalctl", "-u", "minidlna", "--no-pager",
+                   "-n", str(lines), "-o", "short-iso"])
+    if rc == 0 and out:
+        return {"path": "journalctl -u minidlna", "source": "journal",
+                "exists": True, "text": out}
+    return {"path": path, "source": "file", "exists": False, "text": ""}
 
 
 def main():

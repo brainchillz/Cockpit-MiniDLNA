@@ -264,9 +264,11 @@ function settingsCard(d) {
 
 function logCard(d) {
     const c = node("section", "card full");
-    c.append(node("h2", null, "Log"));
+    const h = node("h2", null, "Log");
+    if (d.log.source === "journal") h.append(node("span", "pill warn", "journald"));
+    c.append(h);
     if (!d.log.exists) {
-        c.append(node("p", "empty", `No log file at ${d.log.path}.`));
+        c.append(node("p", "empty", `No log available (checked ${d.log.path}).`));
         return c;
     }
     c.append(node("dl", "kv")).append(node("dd", "mono", d.log.path));
